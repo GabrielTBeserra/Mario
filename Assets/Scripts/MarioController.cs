@@ -50,14 +50,20 @@ public class MarioController : MonoBehaviour
 
     void UpdateAnimation()
     {
-        if (horizontal > 0f)
+        /* if (horizontal > 0f)
+         {
+             sprite.flipX = false;
+         }
+         else if (horizontal < 0f)
+         {
+             sprite.flipX = true;
+         }*/
+
+        if(horizontal != 0)
         {
-            sprite.flipX = false;
+            animator.SetFloat("direction", Mathf.Sign(horizontal));
         }
-        else if (horizontal < 0f)
-        {
-            sprite.flipX = true;
-        }
+        
 
         animator.SetFloat("speed", Mathf.Abs(horizontal));
         animator.SetBool("isGrounded", isGrounded);
